@@ -1,5 +1,9 @@
 # LearnGit
 
+To rename folder to capitalize
+1. git config core.ignorecase false
+2. git mv <project>.FuncApps tmp
+3. git mv tmp <Project>.FuncApps
 
 git cherry-pick <SHA>^..<SHA>\
 git rebase origin/master\
