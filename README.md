@@ -9,7 +9,7 @@ To merge prod to test:\
 git fetch origin\
 git checkout origin/main\
 git checkout -b bugfix/mainToTest\
-git merge origin/test\
+git merge origin/test
 
 git cherry-pick <SHA>^..<SHA>\
 git rebase origin/master\
