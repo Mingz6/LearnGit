@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run Demo tests
         run: |
-          echo "Run Demo tests - Demo 0 - Trigger"
+          echo "Run Demo tests - Demo 0 - Trigger123"
