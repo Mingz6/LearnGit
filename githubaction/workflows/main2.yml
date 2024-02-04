@@ -98,31 +98,31 @@ jobs:
       azureTenantId: ${{ secrets.AZURE_TENANT_ID }}
       azureSubscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-  # RunTests:
-  #   needs: display-environment
-  #   runs-on: ubuntu-latest
-  #   environment: ${{needs.Setup.outputs.ENV_NAME}}
+  RunTests:
+    needs: display-environment
+    runs-on: ubuntu-latest
+    environment: ${{needs.Setup.outputs.ENV_NAME}}
 
-  #   steps:
-  #     - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-  # SendNotification:
-  #   if: ${{ always() }}
-  #   needs: [BuildCode, RunTests, pr-title-check] 
-  #   runs-on: ubuntu-latest
-  #   environment: ${{needs.Setup.outputs.ENV_NAME}}
+  SendNotification:
+    if: ${{ always() }}
+    needs: [BuildCode, RunTests, pr-title-check] 
+    runs-on: ubuntu-latest
+    environment: ${{needs.Setup.outputs.ENV_NAME}}
 
-  #   steps:
-  #     - uses: neonidian/teams-notify-build-status@v3
-  #       with:
-  #         webhookUrl: |                                         # Send to multiple channels in MS Teams
-  #           ${{ secrets.MSTEAMS_WEBHOOK }}
-  #         title: ${{ github.actor }} submitted a PR and waiting for review                        # Specify a title header
-  #         titleBackgroundColor: green #${{ steps.unitTest.outcome }}    # Specify title background color. 'unitTest' is the ID of a step
-  #         status: success #${{ steps.unitTest.outcome }}                  # Specify what should be displayed in the status label
-  #         message: >-
-  #           Unit tests have been run for version ${{ steps.versioning.outputs.semver }}       # 'versioning' is the ID of the steps that creates versioning
-  #       env:                                                     # Enable actor labels and buttons using environment variables
-  #         SHOULD_DISPLAY_ACTOR_LABEL: true
-  #         SHOULD_DISPLAY_VIEW_RUN_BUTTON: true
-  #         SHOULD_DISPLAY_VIEW_COMMIT_BUTTON: true
+    steps:
+      - uses: neonidian/teams-notify-build-status@v3
+        with:
+          webhookUrl: |                                         # Send to multiple channels in MS Teams
+            ${{ secrets.MSTEAMS_WEBHOOK }}
+          title: ${{ github.actor }} submitted a PR and waiting for review                        # Specify a title header
+          titleBackgroundColor: green #${{ steps.unitTest.outcome }}    # Specify title background color. 'unitTest' is the ID of a step
+          status: success #${{ steps.unitTest.outcome }}                  # Specify what should be displayed in the status label
+          message: >-
+            Unit tests have been run for version ${{ steps.versioning.outputs.semver }}       # 'versioning' is the ID of the steps that creates versioning
+        env:                                                     # Enable actor labels and buttons using environment variables
+          SHOULD_DISPLAY_ACTOR_LABEL: true
+          SHOULD_DISPLAY_VIEW_RUN_BUTTON: true
+          SHOULD_DISPLAY_VIEW_COMMIT_BUTTON: true

@@ -10,11 +10,11 @@ permissions:
   pull-requests: write
 
 jobs:
-  validate_pr_title:
-    name: Validate PR title
+  send_teams_notification:
+    name: Send Teams Message
     runs-on: ubuntu-latest
     steps:
-      - name: Request Reviedw if Success
+      - name: Send notification
         uses: neonidian/teams-notify-build-status@v3
         with:
           webhookUrl: |
