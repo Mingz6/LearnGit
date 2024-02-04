@@ -11,7 +11,7 @@ param tags object = {
   Application: 'myapp'
   Environment: environmentName
 }
-var cdnWebApplicationFirewallPolicies_wafCdn_externalid = resourceId('development-shared-resources', 'Microsoft.Cdn/CdnWebApplicationFirewallPolicies', 'wafCdn')
+var cdnWebApplicationFirewallPolicies_wafCdn_externalid = resourceId('<shared-resources-group>', 'Microsoft.Cdn/CdnWebApplicationFirewallPolicies', 'wafCdn')
 
 param cdnProfilesParams object
 param cdnProfiles array = cdnProfilesParams[environmentName]

@@ -17,7 +17,7 @@ var base = 'mingz'
 
 var appInsightsName = '${abbrs.insightsComponents}-${base}-${environmentName}'
 var hybridConnectionName = 'hc-sql-dbname${environmentName}'
-var hybridConnectionResourceId = resourceId('development-shared-resources', 'Microsoft.Relay/Namespaces/Hybridconnections', hybridConnectionServiceBusNamespace, hybridConnectionName)
+var hybridConnectionResourceId = resourceId('<shared-resources-group>', 'Microsoft.Relay/Namespaces/Hybridconnections', hybridConnectionServiceBusNamespace, hybridConnectionName)
 var hybridConnectionServiceBusNamespace = 'sb-hc-mingz'
 var storageAccountKey = listKeys(resourceId('Microsoft.Storage/storageAccounts', storageAccountName), '2022-09-01').keys[0].value
 var storageAccountUrl = 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=${storageAccountKey}'

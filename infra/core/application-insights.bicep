@@ -24,7 +24,7 @@ resource applicationInsights 'Microsoft.Insights/components@2020-02-02' = {
     Application_Type: 'web'
     publicNetworkAccessForIngestion: 'Enabled'
     publicNetworkAccessForQuery: 'Enabled'
-    WorkspaceResourceId: resourceId('development-shared-resources','Microsoft.OperationalInsights/workspaces', logAnalyticsWorkspaceName)
+    WorkspaceResourceId: resourceId('<shared-resources-group>','Microsoft.OperationalInsights/workspaces', logAnalyticsWorkspaceName)
     Flow_Type: 'Redfield'
     Request_Source: 'IbizaWebAppExtensionCreate'
     RetentionInDays: 90
