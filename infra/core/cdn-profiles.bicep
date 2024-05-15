@@ -20,6 +20,8 @@ resource storageAccountResource 'Microsoft.Storage/storageAccounts@2022-09-01' e
   name: cdnProfiles[index].cdnStorageAccountName
 }]
 
+// Create CND profiles serially. Change batchSize to a higher number to create them in parallel.
+@batchSize(1)
 resource cdnProfileResources 'Microsoft.Cdn/profiles@2022-11-01-preview' = [for (cdnProfile, index) in cdnProfiles: {
   name: cdnProfiles[index].cdnProfileName
   location: 'Global'
